@@ -1,0 +1,5 @@
+{
+  "env": {
+    "JWT_KEYS":"jwt_developer_keys"
+  }
+}
