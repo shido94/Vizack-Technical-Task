@@ -16,8 +16,9 @@ const checkAuth = require('../middleware/check-auth');
 router.post('/register', (req,res)=>{
   const userForm = req.body;
 
+  // check for password
   if (userForm.password === userForm.conf_password){
-
+    // encrypt the password
     bcrypt.hash(userForm.password, saltRounds, (err,hash) =>{
       const user = new User({
         name: userForm.username,
@@ -53,6 +54,7 @@ router.post('/register', (req,res)=>{
 router.post('/login', async (req,res)=>{
   const user = req.body;
 
+  // check for admin
   if(user.username === 'admin' && user.password === 'admin') {
     const token = jwt.sign({
         username: 'admin'
@@ -67,8 +69,9 @@ router.post('/login', async (req,res)=>{
     });
   }
   else{
-    const hash = await User.findOne({name: user.username});
 
+    // check for user
+    const hash = await User.findOne({name: user.username});
 
     if (hash) {
       bcrypt.compare(user.password, hash.password, (err,result) =>{
@@ -80,6 +83,8 @@ router.post('/login', async (req,res)=>{
         }
 
         else {
+
+          // create token
           const token = jwt.sign({
               email: hash.email,
               userId: hash._id
@@ -106,6 +111,8 @@ router.post('/login', async (req,res)=>{
 });
 
 router.get('/data', checkAuth, (req,res) => {
+
+  // send data to user as show in their profile
   User.findOne({_id: req.userData.userId}, '-password -__v -role -_id')
     .then(user => {
       return res.status(200).json({

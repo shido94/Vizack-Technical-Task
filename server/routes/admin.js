@@ -10,7 +10,7 @@ const process = require('../../keys/jwt');
 const User = require('../model/registration');
 
 
-
+// show list of user to admin
 router.get('/admin', (req,res) => {
   User.find()
     .then(user => {
@@ -25,6 +25,7 @@ router.get('/admin', (req,res) => {
     })
 });
 
+// delete particular user
 router.post('/deleteUser', (req,res) => {
   User.deleteOne({_id: req.body.id}, (err) => {
     if(!err) {
@@ -39,6 +40,7 @@ router.post('/deleteUser', (req,res) => {
   })
 });
 
+// update the data of particular user
 router.post('/updateUser', (req,res) => {
   const data = req.body.data;
   User.updateOne({_id: data.id}, {
@@ -60,6 +62,7 @@ router.post('/updateUser', (req,res) => {
 
 });
 
+// show data to be update by admin
 router.get('/getdata', (req,res) => {
   const id = req.query.id;
 
