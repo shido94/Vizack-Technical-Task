@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-body">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Profession</th>
+        <th scope="col">Email</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+        <th><a class="nav-link" routerLink="#" (click)="logout()">Logout</a></th>
+
+      </tr>
+      </thead>
+      <tbody *ngFor="let user of users; let i = index">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.Profession}}</td>
+        <td>{{user.email}}</td>
+        <td><a [routerLink]="['/user', user._id]" class="nav-link">update</a></td>
+        <td><a routerLink="#" class="nav-link" (click)="deleteUser(user._id)">delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,18 +1,12 @@
 import {Routes} from '@angular/router';
-import {HomepageComponent} from './homepage/homepage.component';
-import {BranchComponent} from './branch/branch.component';
-import {DisplayDataComponent} from './display-data/display-data.component';
-import {SemesterComponent} from './semester/semester.component';
-import {SubjectComponent} from './subject/subject.component';
-import {DetailsComponent} from './details/details.component';
-import {ViewPdfComponent} from './view-pdf/view-pdf.component';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {AuthGuard} from './gaurds/auth.guard';
+import {ProfileComponent} from './profile/profile.component';
 import {AdminComponent} from './admin/admin.component';
-import {DashboardComponent} from './users/dashboard/dashboard.component';
-import {UploadComponent} from './upload/upload.component';
-import {ProfileComponent} from './users/profile/profile.component';
-import {UploadInfoComponent} from './users/upload-info/upload-info.component';
+import {AuthGuard} from './gaurds/auth.guard';
+import {UpdateComponent} from './update/update.component';
+
 
 
 export const myRoutes: Routes = [
@@ -23,65 +17,33 @@ export const myRoutes: Routes = [
   },
   {
     path: 'home',
-    component: HomepageComponent
+    component: HomeComponent
   },
   {
-    path: 'branch',
-    component: BranchComponent
-    // children: [
-    //   {
-    //     path: 'branch/:id',
-    //     component: SemesterComponent
-    //   }
-    // ],
+    path: 'login',
+    canActivate: [AuthGuard],
+    component: LoginComponent
   },
   {
-    path: 'branch/:name',
-    component: SemesterComponent
-  },
-  // {
-  //   path: 'it',
-  //   component: SemesterComponent
-  // },
-  {
-    path: 'branch/:name/:semester',
-    component: SubjectComponent
-  },
-  {
-    path: 'branch/:name/:semester/:id',
-    component: DisplayDataComponent
-  },
-  {
-    path: 'id',
-    component: DetailsComponent
-  },
-  {
-    path: 'view',
-    component: ViewPdfComponent
-  },
-  {
-    path: 'signup',
+    path: 'register',
     canActivate: [AuthGuard],
     component: RegisterComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: 'admin',
     component: AdminComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'user/:id',
+    component: UpdateComponent
   },
   {
-    path: 'uploads',
-    component: UploadComponent
+    path: 'new',
+    redirectTo: '/admin',
+    pathMatch: 'full'
   },
-  {
-    path: 'dashboard/profile',
-    component: ProfileComponent
-  },
-  {
-    path: 'uploads/information',
-    component: UploadInfoComponent
-  }
 ];

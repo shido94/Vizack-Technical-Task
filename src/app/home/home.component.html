@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <button *ngIf="token" type="button" routerLink="/profile" class="btn btn-success">Profile</button>
+    <button *ngIf="!token" type="button" routerLink="/login" class="btn btn-success">Login</button>
+    <button *ngIf="!token" type="button" style="margin-left: 10px" routerLink="/register" class="btn btn-danger">Register</button>
+  </div>
+
+</div>

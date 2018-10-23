@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+
+
 const process = require('../../keys/jwt');
 
 module.exports = (req,res,next) => {
@@ -10,6 +12,7 @@ module.exports = (req,res,next) => {
     next();
   }
   catch (error) {
+    console.log(error);
     return res.status(401).json({
       success: false,
       message: 'Auth failed'

@@ -1,0 +1,10 @@
+.card{
+  top: 50px;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+}
+
+.card-header{
+  text-align: center;
+}

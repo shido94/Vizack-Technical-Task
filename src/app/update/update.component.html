@@ -1,0 +1,20 @@
+
+<div class="card">
+  <div class="card-header">
+    Update
+  </div>
+  <div class="card-body">
+    <form method="post" (submit)='register(name.value,email.value)'>
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <input type="text" #name id="name" value="{{userData.name}}" class="form-control" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="remail">Email address</label>
+        <input type="email" #email id="remail" value="{{userData.email}}" class="form-control" placeholder="Enter email">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>
