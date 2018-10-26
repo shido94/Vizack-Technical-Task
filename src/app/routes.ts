@@ -40,10 +40,5 @@ export const myRoutes: Routes = [
   {
     path: 'user/:id',
     component: UpdateComponent
-  },
-  {
-    path: 'new',
-    redirectTo: '/admin',
-    pathMatch: 'full'
-  },
+  }
 ];

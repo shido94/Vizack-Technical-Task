@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
 
   deleteUser(id: string) {
     this.userService.deleteAcc(id).subscribe(user => {
-      this.router.navigate(['/new']);
+      this.users = user.user;
     });
   }
 

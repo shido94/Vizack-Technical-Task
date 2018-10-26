@@ -29,9 +29,17 @@ router.get('/admin', (req,res) => {
 router.post('/deleteUser', (req,res) => {
   User.deleteOne({_id: req.body.id}, (err) => {
     if(!err) {
-      return res.status(200).json({
-        success: true
-      });
+      User.find()
+        .then(user => {
+          return res.status(200).json({
+            success: true,
+            user: user
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          throw new error;
+        });
     }
     else{
       console.log(err);

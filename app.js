@@ -50,7 +50,7 @@ app.get('/submit', (req,res) => {
 // Server connection API
 
 const server = http.createServer(app);
-mongoose.connect('mongodb://localhost:27017/task',{ useNewUrlParser: true });
+mongoose.connect('mongodb://rupesh:rupesh94@ds149335.mlab.com:49335/task',{ useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
