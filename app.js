@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const userApi = require('./server/routes/user');
 const adminApi = require('./server/routes/admin');
 
@@ -40,7 +40,7 @@ app.use('/user', userApi);
 app.use('/admin', adminApi);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/dist/task/index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'task','index.html'));
 });
 
 app.get('/submit', (req,res) => {
@@ -55,7 +55,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
-  server.listen(port, () =>{
+  server.listen(process.env.PORT || port, () =>{
     console.log('Server running at port ', port);
   });
 });
